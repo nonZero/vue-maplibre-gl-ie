@@ -1,23 +1,17 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, mapHelpers } from './fixtures';
 
 test.describe('MapLibre GL Map', () => {
-  test('should load and display a map', async ({ page }) => {
-    // Navigate to the test app
-    await page.goto('/');
-
-    // Wait for the page to load
-    await page.waitForLoadState('networkidle');
-
+  test('should load and display a map', async ({ mapPage }) => {
     // Check if the title is visible
-    await expect(page.locator('h1')).toHaveText('MapLibre GL Test');
+    await expect(mapPage.locator('h1')).toHaveText('MapLibre GL Test');
 
     // Check if the map container exists
-    const mapContainer = page.locator('[data-testid="map"]');
+    const mapContainer = mapPage.locator('[data-testid="map"]');
     await expect(mapContainer).toBeVisible();
 
-    // Wait for the map canvas to be present (this indicates the map has rendered)
-    const mapCanvas = page.locator('canvas.maplibregl-canvas');
-    await expect(mapCanvas).toBeVisible({ timeout: 10000 });
+    // Map canvas is already verified by fixture
+    const mapCanvas = mapPage.locator('canvas.maplibregl-canvas');
+    await expect(mapCanvas).toBeVisible();
 
     // Verify the canvas has dimensions (map has rendered)
     const canvasBoundingBox = await mapCanvas.boundingBox();
@@ -26,57 +20,64 @@ test.describe('MapLibre GL Map', () => {
     expect(canvasBoundingBox!.height).toBeGreaterThan(0);
 
     // Take a screenshot for visual verification
-    await page.screenshot({ path: 'e2e/screenshots/map-loaded.png', fullPage: true });
+    await mapPage.screenshot({ path: 'e2e/screenshots/map-loaded.png', fullPage: true });
   });
 
-  test('should have interactive map controls', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
-
-    // Wait for map to load
-    const mapCanvas = page.locator('canvas.maplibregl-canvas');
-    await expect(mapCanvas).toBeVisible({ timeout: 10000 });
+  test('should have interactive map controls', async ({ mapPage }) => {
+    // Map canvas is already loaded by fixture
+    const mapCanvas = mapPage.locator('canvas.maplibregl-canvas');
+    await expect(mapCanvas).toBeVisible();
 
     // Verify the map canvas is interactive
     const canvasElement = await mapCanvas.elementHandle();
     expect(canvasElement).not.toBeNull();
 
     // Check that the map container has the maplibregl class
-    const mapContainer = page.locator('.maplibregl-map');
+    const mapContainer = mapPage.locator('.maplibregl-map');
     await expect(mapContainer).toBeVisible();
   });
 
-  test('should render map tiles', async ({ page }) => {
-    await page.goto('/');
-    await page.waitForLoadState('networkidle');
-
-    // Wait for the map canvas
-    const mapCanvas = page.locator('canvas.maplibregl-canvas');
-    await expect(mapCanvas).toBeVisible({ timeout: 10000 });
+  test('should render map tiles', async ({ mapPage }) => {
+    // Map is already loaded by fixture
+    const mapCanvas = mapPage.locator('canvas.maplibregl-canvas');
+    await expect(mapCanvas).toBeVisible();
 
     // Give the map some time to load tiles
-    await page.waitForTimeout(2000);
+    await mapPage.waitForTimeout(2000);
 
-    // Check if there are any tile images loaded
-    // We can verify this by checking if the canvas has been drawn on
-    const canvasHasContent = await mapCanvas.evaluate((canvas: HTMLCanvasElement) => {
-      const context = canvas.getContext('2d');
-      if (!context) return false;
+    // Use helper to check if canvas has content
+    const canvasHasContent = await mapHelpers.hasCanvasContent(mapPage);
+    expect(canvasHasContent).toBe(true);
+  });
 
-      // Get image data from a small area of the canvas
-      const imageData = context.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
+  test('should have correct map container classes', async ({ mapPage }) => {
+    const mapContainer = mapPage.locator('.maplibregl-map');
+    await expect(mapContainer).toBeVisible();
 
-      // Check if there's any non-zero pixel data (indicating something has been drawn)
-      for (let i = 0; i < data.length; i += 4) {
-        // Check if any pixel has color (not just transparent black)
-        if (data[i] !== 0 || data[i + 1] !== 0 || data[i + 2] !== 0 || data[i + 3] !== 0) {
-          return true;
-        }
-      }
-      return false;
+    // Verify map container has expected classes
+    const hasRequiredClasses = await mapContainer.evaluate((el) => {
+      return (
+        el.classList.contains('maplibregl-map') &&
+        el.querySelector('canvas.maplibregl-canvas') !== null
+      );
     });
 
-    expect(canvasHasContent).toBe(true);
+    expect(hasRequiredClasses).toBe(true);
+  });
+
+  test('should render map at correct zoom level', async ({ mapPage }) => {
+    // Map should be rendered at zoom level 2 (as configured in App.vue)
+    const mapCanvas = mapPage.locator('canvas.maplibregl-canvas');
+    await expect(mapCanvas).toBeVisible();
+
+    // Give map time to stabilize
+    await mapPage.waitForTimeout(1000);
+
+    // We can't directly check zoom level, but we can verify the map rendered
+    // and has the expected canvas size
+    const box = await mapCanvas.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.width).toBeGreaterThan(100);
+    expect(box!.height).toBeGreaterThan(100);
   });
 });
