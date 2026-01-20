@@ -1,6 +1,6 @@
 // Raster Layer
 //
-// Overlay raster tiles with adjustable opacity
+// Overlay raster tiles with adjustable opacity. [API Reference](/api/MglRasterLayer)
 <template>
   <mgl-map
     :map-style="style"

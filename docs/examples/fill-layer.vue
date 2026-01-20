@@ -1,6 +1,6 @@
 // Fill Layer
 //
-// Display filled polygons with data-driven styling
+// Display filled polygons with data-driven styling. [API Reference](/api/MglFillLayer)
 <template>
   <mgl-map
     :map-style="style"

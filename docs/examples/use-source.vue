@@ -1,6 +1,6 @@
 // Use Source Composable
 //
-// Programmatically update GeoJSON source data using the useSource composable
+// Programmatically update GeoJSON source data using the useSource composable. [API Reference](/api/composables#usesource)
 <template>
   <mgl-map
     :map-style="style"

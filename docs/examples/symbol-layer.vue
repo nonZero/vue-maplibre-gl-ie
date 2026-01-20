@@ -1,6 +1,6 @@
 // Symbol Layer
 //
-// Display text labels and symbols on the map
+// Display text labels and symbols on the map. [API Reference](/api/MglSymbolLayer)
 <template>
   <mgl-map
     :map-style="style"

@@ -1,6 +1,6 @@
 // Use Position Watcher Composable
 //
-// Track map position changes using the usePositionWatcher composable
+// Track map position changes using the usePositionWatcher composable. [API Reference](/api/composables#usepositionwatcher)
 <template>
   <mgl-map
     :map-style="style"

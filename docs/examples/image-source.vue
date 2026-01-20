@@ -1,6 +1,6 @@
 // Image Source
 //
-// Overlay a georeferenced image on the map
+// Overlay a georeferenced image on the map. [API Reference](/api/MglImageSource)
 <template>
   <mgl-map
     :map-style="style"

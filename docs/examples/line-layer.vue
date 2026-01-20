@@ -1,6 +1,6 @@
 // Line Layer
 //
-// Display lines and paths with customizable styling
+// Display lines and paths with customizable styling. [API Reference](/api/MglLineLayer)
 <template>
   <mgl-map
     :map-style="style"

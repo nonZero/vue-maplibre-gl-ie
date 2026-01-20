@@ -1,6 +1,6 @@
 // Raster Source
 //
-// Configure custom raster tile sources with various tile servers
+// Configure custom raster tile sources with various tile servers. [API Reference](/api/MglRasterSource)
 <template>
   <mgl-map
     :map-style="style"

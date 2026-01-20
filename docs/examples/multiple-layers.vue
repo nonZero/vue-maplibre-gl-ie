@@ -1,6 +1,6 @@
 // Multiple Layers
 //
-// Combine different layer types with proper ordering and styling
+// Combine different layer types with proper ordering and styling. API: [MglFillLayer](/api/MglFillLayer) | [MglLineLayer](/api/MglLineLayer) | [MglCircleLayer](/api/MglCircleLayer) | [MglSymbolLayer](/api/MglSymbolLayer)
 <template>
   <mgl-map
     :map-style="style"

@@ -1,6 +1,6 @@
 // Fill Extrusion Layer
 //
-// Create 3D extruded buildings with height-based visualization
+// Create 3D extruded buildings with height-based visualization. [API Reference](/api/MglFillExtrusionLayer)
 <template>
   <mgl-map
     :map-style="style"

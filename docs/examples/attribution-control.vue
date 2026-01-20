@@ -1,6 +1,6 @@
 // Attribution Control
 //
-// Customize the attribution display on the map
+// Customize the attribution display on the map. [API Reference](/api/MglAttributionControl)
 <template>
   <mgl-map
     :map-style="style"

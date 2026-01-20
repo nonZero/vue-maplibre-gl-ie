@@ -1,6 +1,6 @@
 // Geolocate Control
 //
-// Find and track the user's location on the map
+// Find and track the user's location on the map. [API Reference](/api/MglGeolocateControl)
 <template>
   <mgl-map
     :map-style="style"

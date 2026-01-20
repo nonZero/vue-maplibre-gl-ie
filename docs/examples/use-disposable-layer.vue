@@ -1,6 +1,6 @@
 // Use Disposable Layer Composable
 //
-// Create and remove temporary layers programmatically using useDisposableLayer
+// Create and remove temporary layers programmatically using useDisposableLayer. [API Reference](/api/composables#usedisposablelayer)
 <template>
   <mgl-map
     :map-style="style"

@@ -1,6 +1,6 @@
 // Heatmap Layer
 //
-// Visualize point density with a heatmap gradient
+// Visualize point density with a heatmap gradient. [API Reference](/api/MglHeatmapLayer)
 <template>
   <mgl-map
     :map-style="style"

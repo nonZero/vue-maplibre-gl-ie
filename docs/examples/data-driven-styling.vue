@@ -1,6 +1,6 @@
 // Data-Driven Styling
 //
-// Use MapLibre expressions for dynamic styling based on feature properties
+// Use MapLibre expressions for dynamic styling based on feature properties. API: [MglCircleLayer](/api/MglCircleLayer) | [MglSymbolLayer](/api/MglSymbolLayer)
 <template>
   <mgl-map
     :map-style="style"

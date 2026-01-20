@@ -1,6 +1,6 @@
 // Point Clustering
 //
-// Cluster point markers at lower zoom levels for better performance
+// Cluster point markers at lower zoom levels for better performance. API: [MglGeoJsonSource](/api/MglGeoJsonSource) | [MglCircleLayer](/api/MglCircleLayer)
 <template>
   <mgl-map
     :map-style="style"

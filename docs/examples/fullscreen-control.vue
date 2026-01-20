@@ -1,6 +1,6 @@
 // Fullscreen Control
 //
-// Toggle fullscreen mode with the fullscreen control button
+// Toggle fullscreen mode with the fullscreen control button. [API Reference](/api/MglFullscreenControl)
 <template>
   <mgl-map
     :map-style="style"

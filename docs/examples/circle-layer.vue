@@ -1,6 +1,6 @@
 // Circle Layer
 //
-// Visualize point data with circles sized and colored by properties
+// Visualize point data with circles sized and colored by properties. [API Reference](/api/MglCircleLayer)
 <template>
   <mgl-map
     :map-style="style"

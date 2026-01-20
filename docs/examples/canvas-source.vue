@@ -1,6 +1,6 @@
 // Canvas Source
 //
-// Render dynamic canvas content as a map layer
+// Render dynamic canvas content as a map layer. [API Reference](/api/MglCanvasSource)
 <template>
   <mgl-map
     :map-style="style"

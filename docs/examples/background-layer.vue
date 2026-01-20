@@ -1,6 +1,6 @@
 // Background Layer
 //
-// Set a custom background color or pattern for the map
+// Set a custom background color or pattern for the map. [API Reference](/api/MglBackgroundLayer)
 <template>
   <mgl-map
     :map-style="mapStyle"

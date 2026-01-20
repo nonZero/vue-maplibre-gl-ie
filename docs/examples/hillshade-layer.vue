@@ -1,6 +1,6 @@
 // Hillshade Layer
 //
-// Add terrain relief shading using DEM data
+// Add terrain relief shading using DEM data. [API Reference](/api/MglHillshadeLayer)
 <template>
   <mgl-map
     :map-style="style"

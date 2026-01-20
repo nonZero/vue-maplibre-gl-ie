@@ -1,6 +1,6 @@
 // Scale Control
 //
-// Display a scale indicator showing map distance
+// Display a scale indicator showing map distance. [API Reference](/api/MglScaleControl)
 <template>
   <mgl-map
     :map-style="style"

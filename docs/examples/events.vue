@@ -1,6 +1,6 @@
 // Map and Layer Events
 //
-// Handle click, hover, and other interactive events on the map
+// Handle click, hover, and other interactive events on the map. API: [MglMap](/api/MglMap) | [MglCircleLayer](/api/MglCircleLayer)
 <template>
   <mgl-map
     :map-style="style"
