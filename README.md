@@ -86,14 +86,7 @@ yarn prettier
 
 ### Working with Examples
 
-Examples are located in `docs/examples/` and are automatically included in the documentation site. Each example is a standalone Vue component that demonstrates specific features:
-
-- `basic.vue` - Basic map setup
-- `marker.vue` - Adding markers
-- `popup.vue` - Working with popups
-- `geojson.vue` - GeoJSON data visualization
-- `custom-control.vue` - Custom map controls
-- And more...
+Examples are located in `docs/examples/` and are automatically included in the documentation site. Each example is a standalone Vue component that demonstrates specific features of the library.
 
 To view examples:
 1. Run `yarn docs:dev`
