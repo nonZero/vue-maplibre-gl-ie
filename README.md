@@ -31,7 +31,7 @@ https://indoorequal.github.io/vue-maplibre-gl/
 ### Prerequisites
 
 - Node.js >= 18
-- Yarn 4.12.0 (managed by packageManager in package.json)
+- [Yarn](https://yarnpkg.com/) 4.12.0 (managed by packageManager in package.json)
 
 ### Installation
 
@@ -65,7 +65,7 @@ yarn docs:build
 yarn docs:preview
 ```
 
-The documentation includes interactive examples that you can test locally. When running `yarn docs:dev`, the documentation will be available at `http://localhost:5173` (default VitePress port).
+The documentation includes interactive examples that you can test locally. When running `yarn docs:dev`, the documentation will be available at `http://localhost:5173` (default [VitePress](https://vitepress.dev/) port).
 
 #### Testing
 
