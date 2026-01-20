@@ -1,12 +1,26 @@
 import { defineConfig } from "vitepress";
 import examplesPath from "../examples/[example].paths.js";
 import componentsPath from "../api/[component].paths.js";
+import path from "path";
+
+const root = path.resolve(__dirname, "../..");
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "@indoorequal/vue-maplibre-gl",
   description: "Vue 3 plugin for maplibre-gl",
   base: process.env.NODE_ENV === "production" ? "/vue-maplibre-gl/" : "/",
+  vite: {
+    resolve: {
+      alias: {
+        // package import used by docs examples
+        "@indoorequal/vue-maplibre-gl": path.resolve(root, "lib/main.ts"),
+
+        // internal alias used inside lib itself
+        "@": root,
+      },
+    },
+  },
   transformPageData: (pageData, { siteConfig }) => {
     if (
       pageData.filePath.startsWith("examples/") &&
