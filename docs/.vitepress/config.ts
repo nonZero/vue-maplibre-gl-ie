@@ -1,88 +1,107 @@
-import { defineConfig } from 'vitepress'
-import examplesPath from '../examples/[example].paths.js';
-import componentsPath from '../api/[component].paths.js';
+import { defineConfig } from "vitepress";
+import examplesPath from "../examples/[example].paths.js";
+import componentsPath from "../api/[component].paths.js";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "@indoorequal/vue-maplibre-gl",
   description: "Vue 3 plugin for maplibre-gl",
-  base: process.env.NODE_ENV === 'production' ? '/vue-maplibre-gl/': '/',
+  base: process.env.NODE_ENV === "production" ? "/vue-maplibre-gl/" : "/",
   transformPageData: (pageData, { siteConfig }) => {
-    if (pageData.filePath.startsWith('examples/') && pageData.filePath != 'examples/index.md') {
+    if (
+      pageData.filePath.startsWith("examples/") &&
+      pageData.filePath != "examples/index.md"
+    ) {
       return {
-        title: `${pageData.params.title} - Examples`
-      }
-    } else if (pageData.filePath.startsWith('api/') && !['api/index.md', 'api/composables.md'].includes(pageData.filePath)) {
+        title: `${pageData.params.title} - Examples`,
+      };
+    } else if (
+      pageData.filePath.startsWith("api/") &&
+      !["api/index.md", "api/composables.md"].includes(pageData.filePath)
+    ) {
       return {
-        title: `${pageData.params.title} - API`
-      }
+        title: `${pageData.params.title} - API`,
+      };
     }
   },
   head: [
     [
-      'script',
-      { defer: '', 'data-domain': 'indoorequal.github.io/vue-maplibre-gl', src: 'https://plausible.io/js/script.js' }
+      "script",
+      {
+        defer: "",
+        "data-domain": "indoorequal.github.io/vue-maplibre-gl",
+        src: "https://plausible.io/js/script.js",
+      },
     ],
   ],
   themeConfig: {
     search: {
-      provider: 'local',
+      provider: "local",
     },
 
     footer: {
-      message: 'Released under the MIT License.',
-      copyright: 'Copyright (c) 2021 Volker Nauruhn, 2024 François de Metz'
+      message: "Released under the MIT License.",
+      copyright: "Copyright (c) 2021 Volker Nauruhn, 2024 François de Metz",
     },
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Guide', link: '/guide/installation' },
-      { text: 'Examples', link: '/examples/' },
-      { text: 'API', link: '/api/' },
-      { text: 'Releases', link: 'https://github.com/indoorequal/vue-maplibre-gl/releases/' },
+      { text: "Home", link: "/" },
+      { text: "Guide", link: "/guide/installation" },
+      { text: "Examples", link: "/examples/" },
+      { text: "API", link: "/api/" },
+      {
+        text: "Releases",
+        link: "https://github.com/indoorequal/vue-maplibre-gl/releases/",
+      },
     ],
 
     sidebar: [
       {
-        text: 'Guide',
+        text: "Guide",
         items: [
-          { text: 'Installation', link: '/guide/installation' },
-          { text: 'Getting started', link: '/guide/getting-started' },
-          { text: 'Adding controls', link: '/guide/controls' },
-          { text: 'Adding source and layer', link: '/guide/source-layer' },
-          { text: 'Nuxt support', link: '/guide/nuxt' }
-        ]
+          { text: "Installation", link: "/guide/installation" },
+          { text: "Getting started", link: "/guide/getting-started" },
+          { text: "Adding controls", link: "/guide/controls" },
+          { text: "Adding source and layer", link: "/guide/source-layer" },
+          { text: "Nuxt support", link: "/guide/nuxt" },
+        ],
       },
       {
-        text: 'Examples',
-        link: '/examples/',
+        text: "Examples",
+        link: "/examples/",
         items: examplesPath.paths().map((example) => {
           return {
             text: example.params.title,
-            link: `/examples/${example.params.example}`
+            link: `/examples/${example.params.example}`,
           };
-        })
+        }),
       },
       {
-        text: 'API',
-        link: '/api/',
+        text: "API",
+        link: "/api/",
         items: [
           {
-            text: 'Components',
-            items: [...(await componentsPath.paths()).reduce((memo, component) => {
-              const type = component.params.type;
-              if (!memo.has(type)) {
-                memo.set(type, []);
-              }
-              memo.get(type).push(component);
-              return memo;
-            }, new Map()).entries()].flatMap(([type, components]) => {
-              components.sort((a, b) => a.params.component.localeCompare(b.params.component) );
-              if (type === 'components') {
+            text: "Components",
+            items: [
+              ...(await componentsPath.paths())
+                .reduce((memo, component) => {
+                  const type = component.params.type;
+                  if (!memo.has(type)) {
+                    memo.set(type, []);
+                  }
+                  memo.get(type).push(component);
+                  return memo;
+                }, new Map())
+                .entries(),
+            ].flatMap(([type, components]) => {
+              components.sort((a, b) =>
+                a.params.component.localeCompare(b.params.component),
+              );
+              if (type === "components") {
                 return components.map((component) => {
                   return {
                     text: component.params.title,
-                    link: `/api/${component.params.component}`
+                    link: `/api/${component.params.component}`,
                   };
                 });
               }
@@ -91,22 +110,25 @@ export default defineConfig({
                 items: components.map((component) => {
                   return {
                     text: component.params.title,
-                    link: `/api/${component.params.component}`
+                    link: `/api/${component.params.component}`,
                   };
-                })
+                }),
               };
-            })
+            }),
           },
           {
-            text: 'Composables',
-            link: '/api/composables'
-          }
-        ]
-      }
+            text: "Composables",
+            link: "/api/composables",
+          },
+        ],
+      },
     ],
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/indoorequal/vue-maplibre-gl' }
-    ]
-  }
-})
+      {
+        icon: "github",
+        link: "https://github.com/indoorequal/vue-maplibre-gl",
+      },
+    ],
+  },
+});
