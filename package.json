@@ -38,7 +38,11 @@
     "docs:preview": "vitepress preview docs",
     "lint": "eslint lib",
     "prettier": "prettier lib test --write",
-    "test": "jest"
+    "test": "jest",
+    "dev:test": "vite --config vite.config.test.ts",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed"
   },
   "devDependencies": {
     "@babel/types": "^7.23.9",
@@ -46,6 +50,7 @@
     "@indoorequal/vue-maplibre-gl": "workspace:^",
     "@maplibre/maplibre-gl-inspect": "^1.7.0",
     "@mdi/js": "^7.4.47",
+    "@playwright/test": "^1.57.0",
     "@types/geojson": "^7946.0.14",
     "@types/jest": "^30.0.0",
     "@types/node": "^24.0.0",
@@ -59,6 +64,7 @@
     "jest": "^30.0.0",
     "jest-environment-jsdom": "^30.0.0",
     "maplibre-gl": "^5.0.0",
+    "playwright": "^1.57.0",
     "prettier": "3.7.4",
     "sass": "^1.71.0",
     "ts-jest": "^29.1.2",
