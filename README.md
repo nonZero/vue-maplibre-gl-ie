@@ -26,6 +26,80 @@ This is a fork of [vue-maplibre-gl](https://github.com/razorness/vue-maplibre-gl
 
 https://indoorequal.github.io/vue-maplibre-gl/
 
+## Development
+
+### Prerequisites
+
+- Node.js >= 18
+- Yarn 4.12.0 (managed by packageManager in package.json)
+
+### Installation
+
+```bash
+yarn install
+```
+
+### Available Scripts
+
+#### Building the Library
+
+```bash
+yarn build
+```
+
+Builds the library for production. This command:
+- Runs TypeScript type checking (`vue-tsc --noEmit`)
+- Builds the library with Vite
+- Generates web-types configuration
+
+#### Running Documentation
+
+```bash
+# Start development server with hot reload
+yarn docs:dev
+
+# Build documentation for production
+yarn docs:build
+
+# Preview production build locally
+yarn docs:preview
+```
+
+The documentation includes interactive examples that you can test locally. When running `yarn docs:dev`, the documentation will be available at `http://localhost:5173` (default VitePress port).
+
+#### Testing
+
+```bash
+# Run tests
+yarn test
+```
+
+#### Code Quality
+
+```bash
+# Lint code
+yarn lint
+
+# Format code with Prettier
+yarn prettier
+```
+
+### Working with Examples
+
+Examples are located in `docs/examples/` and are automatically included in the documentation site. Each example is a standalone Vue component that demonstrates specific features:
+
+- `basic.vue` - Basic map setup
+- `marker.vue` - Adding markers
+- `popup.vue` - Working with popups
+- `geojson.vue` - GeoJSON data visualization
+- `custom-control.vue` - Custom map controls
+- And more...
+
+To view examples:
+1. Run `yarn docs:dev`
+2. Navigate to the Examples section in the documentation
+3. Each example includes live preview and source code
+
 ## PRs welcome ♥
 
 If you have ideas, improvements, suggestions etc. don't hesitate to open a pull request.
